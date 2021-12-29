@@ -37,7 +37,7 @@ router.route('/create-service').post(ensureToken, (req, res, next) => {
   })
 });
 
-router.route('/create-student').post(ensureToken, (req, res, next) => {
+router.route('/create-student').post((req, res, next) => {
   console.log(req.body)
   servicesSchema.findOne({"typeService" : req.body.serviceState}, (err, data)=>{
       if (err) {
