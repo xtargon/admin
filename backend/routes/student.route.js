@@ -39,6 +39,17 @@ router.route('/create-service').post(ensureToken, (req, res, next) => {
 
 router.route('/create-student').post(ensureToken, (req, res, next) => {
   console.log(req.body)
+  servicesSchema.findOne({"typeService" : req.body.serviceState}, (err, data)=>{
+      if (err) {
+        console.log(err)
+      }else{
+        console.log('--->' + data)
+        var e = new Date()
+        const Limitnew = Number(req.body.vence);
+        const payThis = Limitnew*Number(data.price)
+        console.log(payThis)
+      }
+  })
   /*
         servicesSchema.findOne({"typeService" : req.body.serviceState}, (err, data)=>{
             if (err) {
