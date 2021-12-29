@@ -80,6 +80,7 @@ router.route('/create-student').post((req, res) => {
         }
         
       }
+    )}
     res.json(req.body)
   })
   /*
