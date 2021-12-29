@@ -39,11 +39,7 @@ router.route('/create-service').post(ensureToken, (req, res, next) => {
 
 router.route('/create-student').post(ensureToken, (req, res, next) => {
   console.log(req.body)
-  jwt.verify(req.token, 'ENSURE_KEY258741', (err, dat) =>{
-      if(err){
-          res.sendStatus(403)
-          console.log('no autorized')
-      } else {
+  /*
         servicesSchema.findOne({"typeService" : req.body.serviceState}, (err, data)=>{
             if (err) {
               console.log(err)
@@ -195,9 +191,7 @@ router.route('/create-student').post(ensureToken, (req, res, next) => {
                 })
               }
             }
-        })
-      }
-  })
+        })*/
 });
 
 router.route('/admin').post((req, res, next) => {
