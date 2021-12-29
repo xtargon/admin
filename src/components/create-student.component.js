@@ -104,7 +104,7 @@ export default class CreateStudent extends Component {
       this.perfilNetflix = $('#perfilNetflix').val()
     }
     var userObject = {}
-    if (this.acountType != undefined) {
+    if (this.serviceDedicate == "Netflix") {
        userObject = {
         phone: this.state.phone,
         vence: this.state.vence,
@@ -115,6 +115,8 @@ export default class CreateStudent extends Component {
         pass: this.state.pass,
         perfilNet: this.perfilNetflix
       };
+      axios.post('http://75.102.23.138:4000/students/create-student', userObject, {headers: {authorization: 'Bearer '+cookies.get('token')}})
+      .then(res => console.log(res.data));
     }
 
     else{
@@ -128,18 +130,19 @@ export default class CreateStudent extends Component {
         pass: this.state.pass,
         perfilNet: ''
       };
+      axios.post('http://75.102.23.138:4000/students/create-student', userObject, {headers: {authorization: 'Bearer '+cookies.get('token')}})
+      .then(res => console.log(res.data));
     }
     console.log(userObject)
-    axios.post('http://75.102.23.138:4000/students/create-student', userObject, {headers: {authorization: 'Bearer '+cookies.get('token')}})
-      .then(res => console.log(res.data));
-      console.log(userObject)
+
+    console.log(userObject)
     this.setState({
       phone: '',
       plan: '',
       vence: '',
     });
 
-    window.location.replace("/dashboard");
+    //window.location.replace("/dashboard");
     //$('#selectedTypeAcount').val()*/
     //console.log()
   }
