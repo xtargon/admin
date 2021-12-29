@@ -78,6 +78,35 @@ router.route('/create-student').post((req, res) => {
           typeAcount: ''
         };
           console.log(userObject)
+                     studentSchema.create(userObject, (error, data3) => {
+                    if (error) {
+                      return next(error)
+                    } else {
+                      configSchema.find((err, dataConfig) => {
+                        const regex = /cuenta_deposito/i;
+                        var procesedMenssage = dataConfig[0].menssage1.replace(regex, dataConfig[0].depo);
+                        const regex2 = /cuenta_transferencia/i;
+                        var procesedMenssage2 = procesedMenssage.replace(regex2, dataConfig[0].trans);
+                        const regex3 = /su_servicio/i;
+                        var procesedMenssage3 = procesedMenssage2.replace(regex3, req.body.serviceState);
+                        const regex4 = /su_saldo/i;
+                        var procesedMenssage4 = procesedMenssage3.replace(regex4, payThis+' Pesos');
+                        const regex5 = /su_tipo/i;
+                        var procesedMenssage5 = procesedMenssage4.replace(regex5, req.body.acount);
+                        const regex6 = /su_correo/i;
+                        var procesedMenssage6 = procesedMenssage5.replace(regex6, req.body.mail);
+                        const regex7 = /su_contraseña/i;
+                        var procesedMenssage7 = procesedMenssage6.replace(regex7, req.body.pass);
+                        const regex8 = /su_piNet/i;
+                        var procesedMenssage8 = procesedMenssage7.replace(regex8, '');
+                        const regex9 = /su_perfilNet/i;
+                        var procesedMenssage9 = procesedMenssage8.replace(regex9, '');
+                        console.log(procesedMenssage9)
+                        console.log(data3)
+                        //superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61BBE477B4EF9&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                      })
+                    }
+                })
           /*Cerrando else Services*/
         }
         
