@@ -44,13 +44,18 @@ router.route('/create-student').post(ensureToken, (req, res, next) => {
         console.log(err)
       }else{
         console.log('--->' + data)
+        
         var e = new Date()
         const Limitnew = Number(req.body.vence);
         const payThis = Limitnew*Number(data.price)
-        console.log(payThis)
+
+        var hoy = e.getFullYear() +"/"+ (e.getMonth()+1) +"/"+ e.getDate()
+        console.log(hoy)
+
         e.setMonth(e.getMonth() + Limitnew)
         var totalVence = e.getFullYear() +"/"+ (e.getMonth()+1) +"/"+ e.getDate()
-        console.log(totalVence)
+        console.log(hoy)
+        
         if (req.body.serviceState == "Netflix") {
           console.log("PREPARANDO PARA NETFLIX...")
         }
