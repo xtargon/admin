@@ -60,6 +60,32 @@ router.route('/create-student').post((req, res) => {
         
         if (req.body.serviceState == "Netflix") {
           console.log("PREPARANDO PARA NETFLIX...")
+          var saldoNetflix = "";
+          if(req.body.acount == 'Basico'){
+             saldoNetflix = Limitnew*3
+          }
+          if(req.body.acount == 'Estandar'){
+            saldoNetflix = Limitnew*9
+          }
+          if(req.body.acount == 'Premium'){
+                saldoNetflix = Limitnew*12
+          }
+           var userObject = {
+              phone:req.body.phone,
+              plan: data._id,
+              day: hoy.toLocaleDateString(),
+              status: 1,
+              vence: totalVence,
+              numberVence: req.body.vence,
+              typeAcount: req.body.acount,
+              pinNetflix: req.body.pinNet,
+              saldo: saldoNetflix,
+              mail: req.body.mail,
+              pass: req.body.pass,
+              perfilNet: req.body.perfilNet,
+              notes: ''
+            };
+          console.log(userObject)
         }
         if (req.body.serviceState != "Netflix") {
          var userObject = {
