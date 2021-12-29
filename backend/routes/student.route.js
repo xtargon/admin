@@ -48,6 +48,31 @@ router.route('/create-student').post(ensureToken, (req, res, next) => {
         const Limitnew = Number(req.body.vence);
         const payThis = Limitnew*Number(data.price)
         console.log(payThis)
+        e.setMonth(e.getMonth() + Limitnew)
+        var totalVence = e.getFullYear() +"/"+ (e.getMonth()+1) +"/"+ e.getDate()
+        console.log(totalVence)
+        if (req.body.serviceState == "Netflix") {
+          console.log("PREPARANDO PARA NETFLIX...")
+        }
+        else{
+         var userObject = {
+          phone:req.body.phone,
+          plan: data._id,
+          day: hoy.toLocaleDateString(),
+          status: 1,
+          numberVence: req.body.vence,
+          vence: totalVence,
+          saldo: payThis,
+          mail: req.body.mail,
+          pass: req.body.pass,
+          perfilNet: '',
+          pinNetflix:'',
+          notes: '',
+          typeAcount: ''
+        };
+          console.log(userObject)
+          /*Cerrando else Services*/
+        }
       }
   })
   /*
