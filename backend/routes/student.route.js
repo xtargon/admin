@@ -49,7 +49,7 @@ router.route('/create-student').post(ensureToken, (req, res, next) => {
         const Limitnew = Number(req.body.vence);
         const payThis = Limitnew*Number(data.price)
 
-        var hoy = e.getFullYear() +"/"+ (e.getMonth()+1) +"/"+ e.getDate()
+        var hoyx = e.getFullYear() +"/"+ (e.getMonth()+1) +"/"+ e.getDate()
         console.log(hoy)
 
         e.setMonth(e.getMonth() + Limitnew)
@@ -63,7 +63,7 @@ router.route('/create-student').post(ensureToken, (req, res, next) => {
          var userObject = {
           phone:req.body.phone,
           plan: data._id,
-          day: hoy.toLocaleDateString(),
+          day: hoyx,
           status: 1,
           numberVence: req.body.vence,
           vence: totalVence,
