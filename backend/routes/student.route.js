@@ -37,9 +37,9 @@ router.route('/create-service').post(ensureToken, (req, res, next) => {
   })
 });
 
-router.route('/create-student').post((req, res, next) => {
+router.route('/create-student').post((req, res) => {
   console.log(req.body)
-  servicesSchema.findOne({"typeService" : req.body.serviceState}, (err, data)=>{
+  servicesSchema.find({"typeService" : req.body.serviceState}, (err, data)=>{
       if (err) {
         console.log(err)
       }else{
@@ -47,7 +47,7 @@ router.route('/create-student').post((req, res, next) => {
         
         var e = new Date()
         const Limitnew = Number(req.body.vence);
-        const payThis = Limitnew*Number(data.price)
+        const payThis = Limitnew*Number(data[0].price)
 
         var hoyx = e.getFullYear() +"/"+ (e.getMonth()+1) +"/"+ e.getDate()
         console.log(hoy)
@@ -62,7 +62,7 @@ router.route('/create-student').post((req, res, next) => {
         else{
          var userObject = {
           phone:req.body.phone,
-          plan: data._id,
+          plan: data[0]._id,
           day: hoyx,
           status: 1,
           numberVence: req.body.vence,
