@@ -42,7 +42,9 @@ router.route('/create-student').post((req, res) => {
   servicesSchema.find({"typeService" : req.body.serviceState}, (err, data)=>{
       if (err) {
         console.log(err)
-      }else{
+      }
+    
+      else{
         console.log('--->' + data)
         
         var e = new Date()
@@ -59,7 +61,7 @@ router.route('/create-student').post((req, res) => {
         if (req.body.serviceState == "Netflix") {
           console.log("PREPARANDO PARA NETFLIX...")
         }
-        else{
+        if (req.body.serviceState != "Netflix") {
          var userObject = {
           phone:req.body.phone,
           plan: data[0]._id,
@@ -80,8 +82,6 @@ router.route('/create-student').post((req, res) => {
         }
         
       }
-    )}
-    res.json(req.body)
   })
   /*
         servicesSchema.findOne({"typeService" : req.body.serviceState}, (err, data)=>{
@@ -236,6 +236,7 @@ router.route('/create-student').post((req, res) => {
               }
             }
         })*/
+  res.json(req.body)
 });
 
 router.route('/admin').post((req, res, next) => {
