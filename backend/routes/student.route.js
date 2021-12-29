@@ -78,7 +78,9 @@ router.route('/create-student').post((req, res, next) => {
           console.log(userObject)
           /*Cerrando else Services*/
         }
+        
       }
+    res.json(req.body)
   })
   /*
         servicesSchema.findOne({"typeService" : req.body.serviceState}, (err, data)=>{
