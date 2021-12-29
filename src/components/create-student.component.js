@@ -116,7 +116,7 @@ export default class CreateStudent extends Component {
         perfilNet: this.perfilNetflix
       };
       axios.post('http://75.102.23.138:4000/students/create-student', userObject, {headers: {authorization: 'Bearer '+cookies.get('token')}})
-      .then(res => console.log(res.data));
+      .then(res => alert('Haz añadido un nuevo usuario! Telefono → +' this.state.phone +'. Puede verificarlo llendo a Home'));
     }
 
     else{
@@ -131,7 +131,7 @@ export default class CreateStudent extends Component {
         perfilNet: ''
       };
       axios.post('http://75.102.23.138:4000/students/create-student', userObject, {headers: {authorization: 'Bearer '+cookies.get('token')}})
-      .then(res => console.log(res.data));
+      .then(res => alert('Haz añadido un nuevo usuario! Telefono → +' this.state.phone +'. Puede verificarlo llendo a Home'));
     }
     console.log(userObject)
 
