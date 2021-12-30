@@ -424,17 +424,17 @@ router.route('/').get(ensureToken, (req, res) => {
                       var setingState = ""
 
                       if (data[i].status == 3) {
-                        setingState = "Suspendido 😕"
+                        setingState = "Suspendido"
                       }
                       if (data[i].status == 1) {
-                        setingState = "Pagado 😀"
+                        setingState = "Pagado"
                       }
                       if (data[i].status == 2) {
-                        setingState = "Prorroga 😐"
+                        setingState = "Prorroga"
                       }
 
                       if (data[i].status == 0) {
-                        setingState = "Por pagar 😐"
+                        setingState = "Por pagar"
                       }
 
 //editamos el plan: primero era id ahora es el nombre correspondiente y los agrupamos en un array
