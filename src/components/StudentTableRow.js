@@ -46,7 +46,7 @@ export default class StudentTableRow extends Component {
         return (
             <tr>
                 <td>{this.props.obj.phone}</td>
-                <td>{this.props.obj.plan}<br/>{this.props.obj.planDetails}<br/>{this.props.obj.typeAcounts}<br/>{this.props.obj.pinNetflix}</td>
+                <td>{this.props.obj.plan}</td>
                 <td>{this.props.obj.day}</td>
                 <td>{this.props.obj.vence}</td>
                 <td>
@@ -63,7 +63,7 @@ export default class StudentTableRow extends Component {
                 <td>{this.props.obj.saldo}</td>
                 <td>{this.props.obj.mail}</td>
                 <td>{this.props.obj.pass}</td>
-                <td>{this.props.obj.perfilNet}</td>
+                <td>{this.props.obj.perfilNet}<br/>{this.props.obj.planDetails}<br/>{this.props.obj.typeAcounts}<br/>{this.props.obj.pinNetflix}</td>
                 <td>{this.props.obj.nota}</td>
                 <br />
                 <td>
