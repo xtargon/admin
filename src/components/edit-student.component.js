@@ -71,7 +71,7 @@ export default class EditStudent extends Component {
             $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><hr> Perfil de esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
           }
           if (this.acountType == 'Estandar') {
-            $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><hr> Perfiles para esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><select class="select" id="perfilNetflix2" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
+            $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><br><input type="text" placeholder="Pin de Netflix de la segunda cuenta" id="pinNetfilx2" required><hr> Perfiles para esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><select class="select" id="perfilNetflix2" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
           }    
           if (this.acountType == 'Premium'){
             $('#selectTypeAcount').html('')
@@ -111,7 +111,7 @@ export default class EditStudent extends Component {
       $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><hr> Perfil de esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
     }
     if (e.target.value == 'Estandar') {
-      $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><br><input type="text" placeholder="Pin de Netflix" id="pinNetfilx2" required><hr> Perfiles para esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><select class="select" id="perfilNetflix2" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
+      $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><br><input type="text" placeholder="Pin de Netflix de la segunda cuenta" id="pinNetfilx2" required><hr> Perfiles para esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><select class="select" id="perfilNetflix2" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
     }    
     if (e.target.value == 'Premium'){
       $('#selectTypeAcount').html('')
