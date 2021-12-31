@@ -733,7 +733,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                         var procesedMenssage6 = procesedMenssage5.replace(regex6, client.mail);
 
                         const regex7 = /su_contraseña/i;
-                        var procesedMenssage7 = procesedMenssage6.replace(regex7, client.pass);
+                        var procesedMenssage7 = procesedMenssage6.replace(regex7, req.body.pass);
 
                         const regex8 = /su_piNet/i;
                         var procesedMenssage8 = procesedMenssage7.replace(regex8, client.pinNetflix);
