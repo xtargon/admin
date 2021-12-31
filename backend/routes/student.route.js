@@ -221,47 +221,60 @@ router.route('/zz').post((req, res, next) => {
   jwt.verify(req.token, 'ENSURE_KEY258741', (err, dat) =>{
     
     if(req.body.statusNew == 3){
-       configSchema.find((err, dataConfig) => {
-         const regex = /cuenta_deposito/i;
-         var procesedMenssage = dataConfig[0].menssage3.replace(regex, dataConfig[0].depo);
-         const regex2 = /cuenta_transferencia/i;
-         var procesedMenssage2 = procesedMenssage.replace(regex2, dataConfig[0].trans);
-         const regex3 = /su_servicio/i;
-         var procesedMenssage3 = procesedMenssage2.replace(regex3, req.body.plan);
-               
-         var mesaggeutf8 = utf8.encode(procesedMenssage3)
+       studentSchema.findById(req.body.id, (err, thisUser)=>{
+          configSchema.find((err, dataConfig) => {
+            servicesSchema.findById(thisUser.plan, (err, dataServiceSend)=>{
+           
+               const regex = /cuenta_deposito/i;
+               var procesedMenssage = dataConfig[0].menssage3.replace(regex, dataConfig[0].depo);
+               const regex2 = /cuenta_transferencia/i;
+               var procesedMenssage2 = procesedMenssage.replace(regex2, dataConfig[0].trans);
+               const regex3 = /su_servicio/i;
+               var procesedMenssage3 = procesedMenssage2.replace(regex3, dataServiceSend.typeService);
+               var mesaggeutf8 = utf8.encode(procesedMenssage3)
 
-         console.log(mesaggeutf8)
-                        
-         superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+               console.log(mesaggeutf8)
+
+               superagent.post('https://wazbot.com/api/send.php?number='+thisUser.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+
+              
+            })
+          })       
        })     
     }
      if(req.body.statusNew == 1){
-       configSchema.find((err, dataConfig) => {
-         const regex = /cuenta_deposito/i;
-         var procesedMenssage = dataConfig[0].menssage1.replace(regex, dataConfig[0].depo);
-         const regex2 = /cuenta_transferencia/i;
-         var procesedMenssage2 = procesedMenssage.replace(regex2, dataConfig[0].trans);
-         const regex3 = /su_servicio/i;
-         var procesedMenssage3 = procesedMenssage2.replace(regex3, req.body.plan);
-         const regex4 = /su_saldo/i;
-         var procesedMenssage4 = procesedMenssage3.replace(regex4, req.body.saldo);
-         const regex5 = /su_tipo/i;
-         var procesedMenssage5 = procesedMenssage4.replace(regex5, req.body.acount);
-         const regex6 = /su_correo/i;
-         var procesedMenssage6 = procesedMenssage5.replace(regex6, req.body.mail);
-         const regex7 = /su_contraseña/i;
-         var procesedMenssage7 = procesedMenssage6.replace(regex7, req.body.pass);
-         const regex8 = /su_piNet/i;
-         var procesedMenssage8 = procesedMenssage7.replace(regex8, req.body.pinNet);
-         const regex9 = /su_perfilNet/i;
-         var procesedMenssage9 = procesedMenssage8.replace(regex9, req.body.perfNet);
-                               
-         var mesaggeutf8 = utf8.encode(procesedMenssage9)
+       studentSchema.findById(req.body.id, (err, thisUser)=>{
+          configSchema.find((err, dataConfig) => {
+            servicesSchema.findById(thisUser.plan, (err, dataServiceSend)=>{
+           
+               const regex = /cuenta_deposito/i;
+               var procesedMenssage = dataConfig[0].menssage1.replace(regex, dataConfig[0].depo);
+               const regex2 = /cuenta_transferencia/i;
+               var procesedMenssage2 = procesedMenssage.replace(regex2, dataConfig[0].trans);
+               const regex3 = /su_servicio/i;
+               var procesedMenssage3 = procesedMenssage2.replace(regex3, dataServiceSend.typeService);
+               const regex4 = /su_saldo/i;
+               var procesedMenssage4 = procesedMenssage3.replace(regex4, thisUser.saldo);
+               const regex5 = /su_tipo/i;
+               var procesedMenssage5 = procesedMenssage4.replace(regex5, thisUser.typeAcount);
+               const regex6 = /su_correo/i;
+               var procesedMenssage6 = procesedMenssage5.replace(regex6, thisUser.mail);
+               const regex7 = /su_contraseña/i;
+               var procesedMenssage7 = procesedMenssage6.replace(regex7, thisUser.pass);
+               const regex8 = /su_piNet/i;
+               var procesedMenssage8 = procesedMenssage7.replace(regex8, thisUser.pinNetflix);
+               const regex9 = /su_perfilNet/i;
+               var procesedMenssage9 = procesedMenssage8.replace(regex9, thisUser.perfilNet);
 
-         console.log(mesaggeutf8)
-                        
-         superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+               var mesaggeutf8 = utf8.encode(procesedMenssage9)
+
+               console.log(mesaggeutf8)
+
+               superagent.post('https://wazbot.com/api/send.php?number='+thisUser.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+
+              
+            })
+          })       
        })     
     }
     var jsonStatus = {status: req.body.statusNew}
@@ -733,7 +746,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                         console.log(mesaggeutf8)
                         var id = client._id
                         console.log('action for ' + id)
-                        if(req.body.phone != client.phone){
+                        if(req.body.phone != client.phone && client.status != 3){
                             const onlyPass = {
                                pass: req.body.pass
                             };
@@ -822,7 +835,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                         var id = client._id
                         console.log('action for ' + id)
                         
-                        if(req.body.phone != client.phone){
+                        if(req.body.phone != client.phone && client.status != 3){
                          const onlyPass = {
                             pass: req.body.pass
                          };
