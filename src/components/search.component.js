@@ -33,7 +33,7 @@ export default class SearchUser extends Component {
     function search(elem){
 
       let result = elem.phone.match(toSearch);
-      let result2 elem.status.match(toSearch);
+      let result2 = elem.status.match(toSearch);
       
       $( ".selectStatus_Table_search" ).change(function() {
         var id = $(this).attr('id')
