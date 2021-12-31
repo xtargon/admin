@@ -23,7 +23,13 @@ export default class StudentTableRow extends Component {
             statusNew: e.target.value,
             id: this.props.obj.id,
             plan: this.props.obj.plan,
-            phone: this.props.obj.phone
+            phone: this.props.obj.phone,
+            pinNet : this.props.obj.pinNetflix,
+            acount : this.props.obj.typeAcounts,
+            mail : this.props.obj.mail,
+            pass : this.props.obj.pass,
+            saldo: this.props.obj.saldo,
+            perfNet: this.props.obj.perfilNet
         };
 
         var host = window.location.hostname;
