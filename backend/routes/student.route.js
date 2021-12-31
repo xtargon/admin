@@ -670,38 +670,48 @@ router.route('/update-user/:id').put((req, res, next) => {
                   };
 
                   configSchema.find((err, data2) => {
-                    const regex = /cuenta_deposito/i;
-                    var procesedMenssage = data2[0].menssage5.replace(regex, data2[0].depo);
-
-                    const regex2 = /cuenta_transferencia/i;
-                    var procesedMenssage2 = procesedMenssage.replace(regex2, data2[0].trans);
-
-                    const regex3 = /su_servicio/i;
-                    var procesedMenssage3 = procesedMenssage2.replace(regex3, dataService[0].typeService);
-
-                    const regex4 = /su_saldo/i;
-                    var procesedMenssage4 = procesedMenssage3.replace(regex4, saldoNetflix+' Pesos');
-
-                    const regex5 = /su_tipo/i;
-                    var procesedMenssage5 = procesedMenssage4.replace(regex5, req.body.typeAcc);
-
-                    const regex6 = /su_correo/i;
-                    var procesedMenssage6 = procesedMenssage5.replace(regex6, req.body.mail);
-
-                    const regex7 = /su_contraseña/i;
-                    var procesedMenssage7 = procesedMenssage6.replace(regex7, req.body.pass);
-
-                    const regex8 = /su_piNet/i;
-                    var procesedMenssage8 = procesedMenssage7.replace(regex8, req.body.pinNet);
-
-                    const regex9 = /su_perfilNet/i;
-                    var procesedMenssage9 = procesedMenssage8.replace(regex9, req.body.perfilNet);
-                    theMessage = procesedMenssage9;
-                    var mesaggeutf8 = utf8.encode(theMessage)
-
-                    console.log(mesaggeutf8)
-                    superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                    studentSchema.find({"mail": req.body.mail}, (err, elemsUsers) =>{
                       
+                      elemsUsers.forEach(elem => sendMenssagesX(elem));
+                      function sendMenssagesX(client){
+                        const regex = /cuenta_deposito/i;
+                        var procesedMenssage = data2[0].menssage5.replace(regex, data2[0].depo);
+
+                        const regex2 = /cuenta_transferencia/i;
+                        var procesedMenssage2 = procesedMenssage.replace(regex2, data2[0].trans);
+
+                        const regex3 = /su_servicio/i;
+                        var procesedMenssage3 = procesedMenssage2.replace(regex3, dataService[0].typeService);
+
+                        const regex4 = /su_saldo/i;
+                        var procesedMenssage4 = procesedMenssage3.replace(regex4, saldoNetflix+' Pesos');
+
+                        const regex5 = /su_tipo/i;
+                        var procesedMenssage5 = procesedMenssage4.replace(regex5, client.typeAcc);
+
+                        const regex6 = /su_correo/i;
+                        var procesedMenssage6 = procesedMenssage5.replace(regex6, client.mail);
+
+                        const regex7 = /su_contraseña/i;
+                        var procesedMenssage7 = procesedMenssage6.replace(regex7, client.pass);
+
+                        const regex8 = /su_piNet/i;
+                        var procesedMenssage8 = procesedMenssage7.replace(regex8, client.pinNet);
+
+                        const regex9 = /su_perfilNet/i;
+                        var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
+                        theMessage = procesedMenssage9;
+                        var mesaggeutf8 = utf8.encode(theMessage)
+
+                        console.log(mesaggeutf8)
+                        if(req.body.mail != client.mail){
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                        }
+                        else{
+                          console.log('Este no')
+                        }
+                      }
+                    })                     
                   })
                   console.log(theMessage)
 
@@ -735,41 +745,49 @@ router.route('/update-user/:id').put((req, res, next) => {
                       pass: req.body.pass
                   };
 
-                  configSchema.find((err, data2) => {
-                    const regex = /cuenta_deposito/i;
-                    var procesedMenssage = data2[0].menssage5.replace(regex, data2[0].depo);
+                   configSchema.find((err, data2) => {
+                    studentSchema.find({"mail": req.body.mail}, (err, elemsUsers) =>{
+                      
+                      elemsUsers.forEach(elem => sendMenssagesX(elem));
+                      function sendMenssagesX(client){
+                        const regex = /cuenta_deposito/i;
+                        var procesedMenssage = data2[0].menssage5.replace(regex, data2[0].depo);
 
-                    const regex2 = /cuenta_transferencia/i;
-                    var procesedMenssage2 = procesedMenssage.replace(regex2, data2[0].trans);
+                        const regex2 = /cuenta_transferencia/i;
+                        var procesedMenssage2 = procesedMenssage.replace(regex2, data2[0].trans);
 
-                    const regex3 = /su_servicio/i;
-                    var procesedMenssage3 = procesedMenssage2.replace(regex3, dataService[0].typeService);
+                        const regex3 = /su_servicio/i;
+                        var procesedMenssage3 = procesedMenssage2.replace(regex3, dataService[0].typeService);
 
-                    const regex4 = /su_saldo/i;
-                    var procesedMenssage4 = procesedMenssage3.replace(regex4, mont+' Pesos');
+                        const regex4 = /su_saldo/i;
+                        var procesedMenssage4 = procesedMenssage3.replace(regex4, mont+' Pesos');
 
-                    const regex5 = /su_tipo/i;
-                    var procesedMenssage5 = procesedMenssage4.replace(regex5, req.body.typeAcc);
+                        const regex5 = /su_tipo/i;
+                        var procesedMenssage5 = procesedMenssage4.replace(regex5, client.typeAcc);
 
-                    const regex6 = /su_correo/i;
-                    var procesedMenssage6 = procesedMenssage5.replace(regex6, req.body.mail);
+                        const regex6 = /su_correo/i;
+                        var procesedMenssage6 = procesedMenssage5.replace(regex6, client.mail);
 
-                    const regex7 = /su_contraseña/i;
-                    var procesedMenssage7 = procesedMenssage6.replace(regex7, req.body.pass);
+                        const regex7 = /su_contraseña/i;
+                        var procesedMenssage7 = procesedMenssage6.replace(regex7, req.body.pass);
 
-                    const regex8 = /su_piNet/i;
-                    var procesedMenssage8 = procesedMenssage7.replace(regex8, '');
+                        const regex8 = /su_piNet/i;
+                        var procesedMenssage8 = procesedMenssage7.replace(regex8, client.pinNet);
 
-                    const regex9 = /su_perfilNet/i;
-                    var procesedMenssage9 = procesedMenssage8.replace(regex9, '');
+                        const regex9 = /su_perfilNet/i;
+                        var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
+                        theMessage = procesedMenssage9;
+                        var mesaggeutf8 = utf8.encode(theMessage)
 
-
-                    theMessage = procesedMenssage9;
-                    var mesaggeutf8 = utf8.encode(theMessage)
-
-                    console.log(mesaggeutf8)
-                    superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
-                    
+                        console.log(mesaggeutf8)
+                        if(req.body.mail != client.mail){
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                        }
+                        else{
+                          console.log('Este no')
+                        }
+                      }
+                    })                     
                   })
                   console.log(theMessage)
 
