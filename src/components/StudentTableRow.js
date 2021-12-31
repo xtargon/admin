@@ -67,7 +67,6 @@ export default class StudentTableRow extends Component {
                 <td>{this.props.obj.pass}</td>
                 <td>{this.props.obj.perfilNet}<br/>{this.props.obj.planDetails}<br/>{this.props.obj.typeAcounts}<br/>{this.props.obj.pinNetflix}</td>
                 <td>{this.props.obj.nota}</td>
-                <br />
                 <td>
                     <Link className="aTable" to={"/edit-user/" + this.props.obj.id}>
                         Editar
