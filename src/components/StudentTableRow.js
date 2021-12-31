@@ -22,7 +22,8 @@ export default class StudentTableRow extends Component {
         var userStatus = {
             statusNew: e.target.value,
             id: this.props.obj.id,
-            plan: this.props.obj.plan
+            plan: this.props.obj.plan,
+            phone: this.props.obj.phone
         };
 
         var host = window.location.hostname;
