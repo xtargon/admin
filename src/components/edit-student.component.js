@@ -79,6 +79,7 @@ export default class EditStudent extends Component {
 
           if (this.plan == "Netflix") {
             $('#selectedType').css('display','inline-block')
+            $('#selectedType').val(this.acountType) 
           } 
 
           else{
@@ -110,7 +111,7 @@ export default class EditStudent extends Component {
       $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><hr> Perfil de esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
     }
     if (e.target.value == 'Estandar') {
-      $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><hr> Perfiles para esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><select class="select" id="perfilNetflix2" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
+      $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><br><input type="text" placeholder="Pin de Netflix" id="pinNetfilx2" required><hr> Perfiles para esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><select class="select" id="perfilNetflix2" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
     }    
     if (e.target.value == 'Premium'){
       $('#selectTypeAcount').html('')
@@ -174,6 +175,7 @@ export default class EditStudent extends Component {
 
       this.pinNet = $('#pinNetfilx').val()
       this.perfilNetflix = $('#perfilNetflix').val()+' - '+$('#perfilNetflix2').val()
+      this.pinNet = $('#pinNetfilx').val()+' - '+$('#pinNetfilx2').val()
 
     }
     if (typeA == 'Basico') {
