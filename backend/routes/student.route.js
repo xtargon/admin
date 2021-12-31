@@ -706,21 +706,35 @@ router.route('/update-user/:id').put((req, res, next) => {
                         console.log(mesaggeutf8)
                         var id = client._id
                         console.log('action for ' + id)
-                        studentSchema.findByIdAndUpdate(id, {
-                          $set: userObject
-                        }, (error, data) => {
-                          if (error) {
-                            return next(error);
-                            console.log(error)
-                          } else {
-                            console.log('Student updated successfully !')
-                            res.json(data)
-                          }
-                        })
                         if(req.body.phone != client.phone){
+                            const onlyPass = {
+                               pass: req.body.pass
+                            };
+                           studentSchema.findByIdAndUpdate(id, {
+                              $set: onlyPass
+                            }, (error, data) => {
+                              if (error) {
+                                return next(error);
+                                console.log(error)
+                              } else {
+                                console.log('Student updated successfully !')
+                                res.json(data)
+                              }
+                            })
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                         }
                         else{
+                         studentSchema.findByIdAndUpdate(id, {
+                            $set: userObject
+                          }, (error, data) => {
+                            if (error) {
+                              return next(error);
+                              console.log(error)
+                            } else {
+                              console.log('Student updated successfully !')
+
+                            }
+                          })
                           console.log('Este no ' + client.phone)
                         }
                       }
@@ -781,22 +795,39 @@ router.route('/update-user/:id').put((req, res, next) => {
                         console.log(mesaggeutf8)
                         var id = client._id
                         console.log('action for ' + id)
-                       studentSchema.findByIdAndUpdate(id, {
-                          $set: userObject
-                        }, (error, data) => {
-                          if (error) {
-                            return next(error);
-                            console.log(error)
-                          } else {
-                            console.log('Student updated successfully !')
-                            
-                          }
-                        })
                         
                         if(req.body.phone != client.phone){
+                         const onlyPass = {
+                            pass: req.body.pass
+                         };
+                          
+                         studentSchema.findByIdAndUpdate(id, {
+                            $set: onlyPass
+                          }, (error, data) => {
+                            if (error) {
+                              return next(error);
+                              console.log(error)
+                            } else {
+                              console.log('Student updated successfully !')
+
+                            }
+                          })
+                          
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                         }
+                        
                         else{
+                         studentSchema.findByIdAndUpdate(id, {
+                            $set: userObject
+                          }, (error, data) => {
+                            if (error) {
+                              return next(error);
+                              console.log(error)
+                            } else {
+                              console.log('Student updated successfully !')
+
+                            }
+                          })
                           console.log('Este no ' + client.phone)
                         }
                       }
