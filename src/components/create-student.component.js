@@ -55,7 +55,7 @@ export default class CreateStudent extends Component {
       $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><hr> Perfil de esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
     }
     if (e.target.value == 'Estandar') {
-      $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><hr> Perfiles para esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><select class="select" id="perfilNetflix2" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
+      $('#selectTypeAcount').html('<input type="text" placeholder="Pin de Netflix" id="pinNetfilx" required><input type="text" placeholder="Pin de Netflix de la segunda cuenta" id="pinNetfilx2" required><hr> Perfiles para esta cuenta<select class="select" id="perfilNetflix" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><select class="select" id="perfilNetflix2" required><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>')
     }    
     if (e.target.value == 'Premium'){
       $('#selectTypeAcount').html('')
@@ -99,6 +99,7 @@ export default class CreateStudent extends Component {
     this.pinNet = $('#pinNetfilx').val()
     if (this.acountType == 'Estandar') {
       this.perfilNetflix = $('#perfilNetflix').val()+' - '+$('#perfilNetflix2').val()
+      this.pinNet = $('#pinNetfilx').val()+' - '+$('#pinNetfilx2').val()
     }
     if (this.acountType == 'Basico') {
       this.perfilNetflix = $('#perfilNetflix').val()
