@@ -26,48 +26,52 @@ export default class SearchUser extends Component {
   }
 
   onSubmit(e) {
-      var toSearch = document.getElementById("searchField").value;
-      var print = document.getElementById("userShow")
-      var showPrint = []
+    var toSearch = document.getElementById("searchField").value;
+    var print = document.getElementById("userShow")
+    var showPrint = []
       
     function search(elem){
 
-      let result = elem.phone.match(toSearch);
-      let result2 = elem.status.match(toSearch);
-      let result3 = elem.day.match(toSearch);
-      let result4 = elem.mail.match(toSearch);
-      let result5 = elem.perfilNet.match(toSearch);
-      let result6 = elem.plan.match(toSearch);
-      let result7 = elem.typeAcounts.match(toSearch);
-      let result9 = elem.vence.match(toSearch);
-      
-      if(result || result2 || result3 || result4 || result5 || result6 || result7 || result9){
-        showPrint.push(elem);
-        var divClone = $("#tableUsers").text("")
+        let result = elem.phone.match(toSearch);
+        let result2 = elem.status.match(toSearch);
+        let result6 = elem.plan.match(toSearch);
+
+     if(result || result2 || result6){
+           showPrint.push(elem);
+            var divClone = $("#tableUsers").text("")
+            if(showPrint.length > 0){
+              showPrint.forEach(user => $('#tableUsers').append('<tr><td>'+user.phone+'</td><td>'+user.plan+'</td><td>'+user.day+'</td><td>'+user.vence+'</td><td><select id="'+user.id+'" class="selectStatus_Table_search"><option  selected disabled>Seleccione un estado de usuario</option><option value="1">Vigente</option><option value="0">Por pagar</option><option value="2">Prorroga</option><option value="3">Suspendido</option></select>'+user.status+'</td><td>'+user.saldo+'</td><td>'+user.mail+'</td><td>'+user.pass+'</td><td>'+user.perfilNet+'<br><hr>'+user.typeAcounts+'<br>'+user.pinNetflix+'</td><td>'+user.nota+'</td><br><td> <a class="aTable" href="/edit-user/'+user.id+'">Edit</a><hr><a class="ButtonTable" href="/delete-user/'+user.id+'" type="button">Delete</a></td></tr>'));
+            }
+            else{
+               $('#tableUsers').html('<tr><td>'+elem.phone+'</td><td>'+elem.plan+'<td>'+elem.day+'</td><td>'+elem.vence+'</td><td>'+elem.status+'</td><td>'+elem.saldo+'</td><td><select id="'+elem.id+'" class="selectStatus_Table_search"><option  selected disabled>Seleccione un estado de usuario</option><option value="1">Vigente</option><option value="0">Por pagar</option><option value="2">Prorroga</option><option value="3">Suspendido</option></select>'+elem.mail+'</td><td>'+elem.pass+'</td><td>'+elem.perfilNet+'<br><hr>'+elem.typeAcounts+'<br>'+elem.pinNetflix+'</td><td>'+elem.nota+'</td><br><td><a class="aTable" href="/edit-user/'+elem.id+'">Edit</a><hr><a class="ButtonTable" href="/delete-user/'+elem.id+'" type="button">Delete</a></td></tr>');
+            }
       }
       else{
-         $('#tableUsers').html('<tr><td>'+elem.phone+'</td><td>'+elem.plan+'<td>'+elem.day+'</td><td>'+elem.vence+'</td><td>'+elem.status+'</td><td>'+elem.saldo+'</td><td><select id="'+elem.id+'" class="selectStatus_Table_search"><option  selected disabled>Seleccione un estado de usuario</option><option value="1">Vigente</option><option value="0">Por pagar</option><option value="2">Prorroga</option><option value="3">Suspendido</option></select>'+elem.mail+'</td><td>'+elem.pass+'</td><td>'+elem.perfilNet+'<br><hr>'+elem.typeAcounts+'<br>'+elem.pinNetflix+'</td><td>'+elem.nota+'</td><br><td><a class="aTable" href="/edit-user/'+elem.id+'">Edit</a><hr><a class="ButtonTable" href="/delete-user/'+elem.id+'" type="button">Delete</a></td></tr>');
-      }
-      
-    }
+        if(elem.phone == toSearch || elem.day == toSearch || elem.perfilNet == toSearch || elem.mail == toSearch || elem.plan == toSearch || elem.status == toSearch || elem.vence == toSearch || elem.saldo == toSearch || elem.typeAcounts == toSearch){          
+            showPrint.push(elem);
+            var divClone = $("#tableUsers").text("")
+            if(showPrint.length > 0){
+              showPrint.forEach(user => $('#tableUsers').append('<tr><td>'+user.phone+'</td><td>'+user.plan+'</td><td>'+user.day+'</td><td>'+user.vence+'</td><td><select id="'+user.id+'" class="selectStatus_Table_search"><option  selected disabled>Seleccione un estado de usuario</option><option value="1">Vigente</option><option value="0">Por pagar</option><option value="2">Prorroga</option><option value="3">Suspendido</option></select>'+user.status+'</td><td>'+user.saldo+'</td><td>'+user.mail+'</td><td>'+user.pass+'</td><td>'+user.perfilNet+'<br><hr>'+user.typeAcounts+'<br>'+user.pinNetflix+'</td><td>'+user.nota+'</td><br><td> <a class="aTable" href="/edit-user/'+user.id+'">Edit</a><hr><a class="ButtonTable" href="/delete-user/'+user.id+'" type="button">Delete</a></td></tr>'));
+            }
+            else{
+               $('#tableUsers').html('<tr><td>'+elem.phone+'</td><td>'+elem.plan+'<td>'+elem.day+'</td><td>'+elem.vence+'</td><td>'+elem.status+'</td><td>'+elem.saldo+'</td><td><select id="'+elem.id+'" class="selectStatus_Table_search"><option  selected disabled>Seleccione un estado de usuario</option><option value="1">Vigente</option><option value="0">Por pagar</option><option value="2">Prorroga</option><option value="3">Suspendido</option></select>'+elem.mail+'</td><td>'+elem.pass+'</td><td>'+elem.perfilNet+'<br><hr>'+elem.typeAcounts+'<br>'+elem.pinNetflix+'</td><td>'+elem.nota+'</td><br><td><a class="aTable" href="/edit-user/'+elem.id+'">Edit</a><hr><a class="ButtonTable" href="/delete-user/'+elem.id+'" type="button">Delete</a></td></tr>');
+            }
+        }        
+      }        
+  }      
+  collections.forEach(element => search(element));
     
-    if(showPrint.length > 0){
-      showPrint.forEach(user => $('#tableUsers').append('<tr><td>'+user.phone+'</td><td>'+user.plan+'</td><td>'+user.day+'</td><td>'+user.vence+'</td><td><select id="'+user.id+'" class="selectStatus_Table_search"><option  selected disabled>Seleccione un estado de usuario</option><option value="1">Vigente</option><option value="0">Por pagar</option><option value="2">Prorroga</option><option value="3">Suspendido</option></select>'+user.status+'</td><td>'+user.saldo+'</td><td>'+user.mail+'</td><td>'+user.pass+'</td><td>'+user.perfilNet+'<br><hr>'+user.typeAcounts+'<br>'+user.pinNetflix+'</td><td>'+user.nota+'</td><br><td> <a class="aTable" href="/edit-user/'+user.id+'">Edit</a><hr><a class="ButtonTable" href="/delete-user/'+user.id+'" type="button">Delete</a></td></tr>'));
-    }
-    
-    collections.forEach(element => search(element));
-    
-      $( ".selectStatus_Table_search" ).change(function() {
-        var id = $(this).attr('id')
-        var value = $(this).val()
+    $( ".selectStatus_Table_search" ).change(function() {
+      var id = $(this).attr('id')
+      var value = $(this).val()
         
-        var userStatus = {
-          statusNew: value,
-          id: id
-        };
+      var userStatus = {
+        statusNew: value,
+        id: id
+      };
         
-       axios.post('http://75.102.23.138:4000/students/zz', userStatus, {headers: {authorization: 'Bearer '+cookies.get('token')}})
-        .then(res => window.location.replace("/dashboard"));
+      axios.post('http://75.102.23.138:4000/students/zz', userStatus, {headers: {authorization: 'Bearer '+cookies.get('token')}})
+       .then(res => window.location.replace("/dashboard"));
       });    
   }
 
