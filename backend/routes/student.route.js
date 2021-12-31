@@ -696,7 +696,12 @@ router.route('/update-user/:id').put((req, res, next) => {
 
                     const regex9 = /su_perfilNet/i;
                     var procesedMenssage9 = procesedMenssage8.replace(regex9, req.body.perfilNet);
-                    theMessage = procesedMenssage9;                          
+                    theMessage = procesedMenssage9;
+                    var mesaggeutf8 = utf8.encode(theMessage)
+
+                    console.log(mesaggeutf8)
+                    superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                      
                   })
                   console.log(theMessage)
 
@@ -709,11 +714,6 @@ router.route('/update-user/:id').put((req, res, next) => {
                     } else {
                       
                       console.log('Student updated successfully !')
-                      
-                          var mesaggeutf8 = utf8.encode(theMessage)
-
-                          console.log(mesaggeutf8)
-                      superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                       res.json(data)
                     }
                   })
@@ -764,7 +764,12 @@ router.route('/update-user/:id').put((req, res, next) => {
                     var procesedMenssage9 = procesedMenssage8.replace(regex9, '');
 
 
-                    theMessage = procesedMenssage8;                          
+                    theMessage = procesedMenssage9;
+                    var mesaggeutf8 = utf8.encode(theMessage)
+
+                    console.log(mesaggeutf8)
+                    superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                    
                   })
                   console.log(theMessage)
 
@@ -776,10 +781,6 @@ router.route('/update-user/:id').put((req, res, next) => {
                       console.log(error)
                     } else {
                       console.log('Student updated successfully !')
-                          var mesaggeutf8 = utf8.encode(theMessage)
-
-                          console.log(mesaggeutf8)
-                      superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                       res.json(data)
                     }
                   })
