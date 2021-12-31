@@ -104,6 +104,10 @@ export default class CreateStudent extends Component {
     if (this.acountType == 'Basico') {
       this.perfilNetflix = $('#perfilNetflix').val()
     }
+    if (this.acountType == 'Premium') {
+      this.perfilNetflix = ''
+      this.pinNet = ''
+    }
     var userObject = {}
     if (this.serviceDedicate == "Netflix") {
        userObject = {
