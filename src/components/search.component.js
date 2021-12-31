@@ -39,11 +39,10 @@ export default class SearchUser extends Component {
       let result5 = elem.perfilNet.match(toSearch);
       let result6 = elem.plan.match(toSearch);
       let result7 = elem.typeAcounts.match(toSearch);
-      let result8 = elem.saldo.match(toSearch);
       let result9 = elem.vence.match(toSearch);
       
     
-      if(result || result2 || result3 || result4 || result5 || result6 || result7 || result8 || result9){
+      if(result || result2 || result3 || result4 || result5 || result6 || result7 || result9){
             showPrint.push(elem);
             var divClone = $("#tableUsers").text("")
 
