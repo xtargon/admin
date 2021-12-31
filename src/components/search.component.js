@@ -30,19 +30,6 @@ export default class SearchUser extends Component {
       var print = document.getElementById("userShow")
       var showPrint = []
       
-      $( ".selectStatus_Table_search" ).change(function() {
-        var id = $(this).attr('id')
-        var value = $(this).val()
-        
-        var userStatus = {
-          statusNew: value,
-          id: id
-        };
-        
-       axios.post('http://75.102.23.138:4000/students/zz', userStatus, {headers: {authorization: 'Bearer '+cookies.get('token')}})
-        .then(res => window.location.replace("/dashboard"));
-      });
-      
     function search(elem){
 
       let result = elem.phone.match(toSearch);
@@ -76,8 +63,21 @@ export default class SearchUser extends Component {
         }        
       }
     }
-
-        collections.forEach(element => search(element));
+    
+    collections.forEach(element => search(element));
+    
+      $( ".selectStatus_Table_search" ).change(function() {
+        var id = $(this).attr('id')
+        var value = $(this).val()
+        
+        var userStatus = {
+          statusNew: value,
+          id: id
+        };
+        
+       axios.post('http://75.102.23.138:4000/students/zz', userStatus, {headers: {authorization: 'Bearer '+cookies.get('token')}})
+        .then(res => window.location.replace("/dashboard"));
+      });    
   }
 
 
