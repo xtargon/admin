@@ -172,10 +172,11 @@ router.route('/create-student').post((req, res) => {
                         var procesedMenssage9 = procesedMenssage8.replace(regex9, '');
                         
                         console.log('Esto guardo -->'+data3)
-                        utf8.encode(procesedMenssage9)
-                        console.log(procesedMenssage9)
+                         var mesaggeutf8 = utf8.encode(procesedMenssage9)
+
+                         console.log(mesaggeutf8)
                         
-                        superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                        superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
                       })
                     }
                 })
@@ -303,9 +304,11 @@ router.route('/updateStatus').get((req, res) => {
 
                           const regex9 = /su_perfilNet/i;
                           var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
-                          utf8.encode(procesedMenssage9)
+                         var mesaggeutf8 = utf8.encode(procesedMenssage9)
+
+                         console.log(mesaggeutf8)
                           
-                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
                         }
 
@@ -337,8 +340,10 @@ router.route('/updateStatus').get((req, res) => {
 
                           const regex9 = /su_perfilNet/i;
                           var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
-                          utf8.encode(procesedMenssage9)
-                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                          var mesaggeutf8 = utf8.encode(procesedMenssage9)
+
+                          console.log(mesaggeutf8)
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
                         }
                         if (days == 0) {
@@ -371,8 +376,10 @@ router.route('/updateStatus').get((req, res) => {
                           var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
 
                           var theMessage = procesedMenssage9;
-                          utf8.encode(procesedMenssage9)
-                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                          var mesaggeutf8 = utf8.encode(procesedMenssage9)
+
+                          console.log(mesaggeutf8)
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
                         }
 
 
@@ -685,7 +692,10 @@ router.route('/update-user/:id').put((req, res, next) => {
                       
                       console.log('Student updated successfully !')
                       utf8.encode(theMessage)
-                      superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+theMessage+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                          var mesaggeutf8 = utf8.encode(theMessage)
+
+                          console.log(mesaggeutf8)
+                      superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                       res.json(data)
                     }
                   })
@@ -748,8 +758,10 @@ router.route('/update-user/:id').put((req, res, next) => {
                       console.log(error)
                     } else {
                       console.log('Student updated successfully !')
-                      utf8.encode(theMessage)
-                      superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+theMessage+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                          var mesaggeutf8 = utf8.encode(theMessage)
+
+                          console.log(mesaggeutf8)
+                      superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                       res.json(data)
                     }
                   })
