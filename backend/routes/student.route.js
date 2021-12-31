@@ -745,7 +745,6 @@ router.route('/update-user/:id').put((req, res, next) => {
                                 console.log(error)
                               } else {
                                 console.log('Student updated successfully !')
-                                res.json(data)
                               }
                             })
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
