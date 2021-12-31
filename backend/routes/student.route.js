@@ -219,6 +219,24 @@ router.route('/config').get((req, res, next) => {
 
 router.route('/zz').post((req, res, next) => {
   jwt.verify(req.token, 'ENSURE_KEY258741', (err, dat) =>{
+    
+    if(req.body.statusNew == 'Suspendido'){
+       configSchema.find((err, dataConfig) => {
+         const regex = /cuenta_deposito/i;
+         var procesedMenssage = dataConfig[0].menssage3.replace(regex, dataConfig[0].depo);
+         const regex2 = /cuenta_transferencia/i;
+         var procesedMenssage2 = procesedMenssage.replace(regex2, dataConfig[0].trans);
+         const regex3 = /su_servicio/i;
+         var procesedMenssage3 = procesedMenssage2.replace(regex3, req.body.plan);
+               
+         var mesaggeutf8 = utf8.encode(procesedMenssage3)
+
+         console.log(mesaggeutf8)
+                        
+         superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+       })     
+    }
+    
     var jsonStatus = {status: req.body.statusNew}
     studentSchema.findByIdAndUpdate(req.body.id, {$set: jsonStatus},
     (error, data) => {
