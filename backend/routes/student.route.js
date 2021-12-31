@@ -5,6 +5,7 @@ let jwt = require('jsonwebtoken');
 
 const got = require('got');
 const superagent = require('superagent');
+const utf8 = require('utf8');
 const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido+3);
 
@@ -118,7 +119,8 @@ router.route('/create-student').post((req, res) => {
                    const regex9 = /su_perfilNet/i;
                    var procesedMenssage9 = procesedMenssage8.replace(regex9, req.body.perfilNet);
                    
-                   console.log('Esto guardo -->'+data2)     
+                   console.log('Esto guardo -->'+data2)
+                   utf8.encode(procesedMenssage9)
                    console.log(procesedMenssage9)
             
                    superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
@@ -169,6 +171,7 @@ router.route('/create-student').post((req, res) => {
                         var procesedMenssage9 = procesedMenssage8.replace(regex9, '');
                         
                         console.log('Esto guardo -->'+data3)
+                        utf8.encode(procesedMenssage9)
                         console.log(procesedMenssage9)
                         
                         superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
@@ -299,6 +302,7 @@ router.route('/updateStatus').get((req, res) => {
 
                           const regex9 = /su_perfilNet/i;
                           var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
+                          utf8.encode(procesedMenssage9)
                           
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
@@ -332,7 +336,7 @@ router.route('/updateStatus').get((req, res) => {
 
                           const regex9 = /su_perfilNet/i;
                           var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
-                          
+                          utf8.encode(procesedMenssage9)
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
                         }
@@ -366,7 +370,7 @@ router.route('/updateStatus').get((req, res) => {
                           var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
 
                           var theMessage = procesedMenssage9;
-                          
+                          utf8.encode(procesedMenssage9)
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
                         }
 
@@ -679,6 +683,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                     } else {
                       
                       console.log('Student updated successfully !')
+                      utf8.encode(theMessage)
                       superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+theMessage+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                       res.json(data)
                     }
@@ -741,7 +746,8 @@ router.route('/update-user/:id').put((req, res, next) => {
                       return next(error);
                       console.log(error)
                     } else {
-                      console.log('Student updated successfully !')            
+                      console.log('Student updated successfully !')
+                      utf8.encode(theMessage)
                       superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+theMessage+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                       res.json(data)
                     }
