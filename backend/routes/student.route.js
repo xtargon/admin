@@ -696,7 +696,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                         var procesedMenssage7 = procesedMenssage6.replace(regex7, client.pass);
 
                         const regex8 = /su_piNet/i;
-                        var procesedMenssage8 = procesedMenssage7.replace(regex8, client.pinNet);
+                        var procesedMenssage8 = procesedMenssage7.replace(regex8, client.pinNetflix);
 
                         const regex9 = /su_perfilNet/i;
                         var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
@@ -704,30 +704,29 @@ router.route('/update-user/:id').put((req, res, next) => {
                         var mesaggeutf8 = utf8.encode(theMessage)
 
                         console.log(mesaggeutf8)
-                        if(req.body.mail != client.mail){
+                        var id = client._id
+                        console.log('action for ' + id)
+                        studentSchema.findByIdAndUpdate(id, {
+                          $set: userObject
+                        }, (error, data) => {
+                          if (error) {
+                            return next(error);
+                            console.log(error)
+                          } else {
+                            console.log('Student updated successfully !')
+                            res.json(data)
+                          }
+                        })
+                        if(req.body.phone != client.phone){
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                         }
                         else{
-                          console.log('Este no')
+                          console.log('Este no ' + client.phone)
                         }
                       }
                     })                     
                   })
                   console.log(theMessage)
-
-                  studentSchema.findByIdAndUpdate(req.params.id, {
-                    $set: userObject
-                  }, (error, data) => {
-                    if (error) {
-                      return next(error);
-                      console.log(error)
-                    } else {
-                      
-                      console.log('Student updated successfully !')
-                      res.json(data)
-                    }
-                  })
-
               }else{
                   var mont =  Number(dataService[0].price)*missingThisMonths;
                   const userObject = {
@@ -772,7 +771,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                         var procesedMenssage7 = procesedMenssage6.replace(regex7, req.body.pass);
 
                         const regex8 = /su_piNet/i;
-                        var procesedMenssage8 = procesedMenssage7.replace(regex8, client.pinNet);
+                        var procesedMenssage8 = procesedMenssage7.replace(regex8, client.pinNetflix);
 
                         const regex9 = /su_perfilNet/i;
                         var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
@@ -780,32 +779,34 @@ router.route('/update-user/:id').put((req, res, next) => {
                         var mesaggeutf8 = utf8.encode(theMessage)
 
                         console.log(mesaggeutf8)
-                        if(req.body.mail != client.mail){
+                        var id = client._id
+                        console.log('action for ' + id)
+                       studentSchema.findByIdAndUpdate(id, {
+                          $set: userObject
+                        }, (error, data) => {
+                          if (error) {
+                            return next(error);
+                            console.log(error)
+                          } else {
+                            console.log('Student updated successfully !')
+                            
+                          }
+                        })
+                        
+                        if(req.body.phone != client.phone){
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                         }
                         else{
-                          console.log('Este no')
+                          console.log('Este no ' + client.phone)
                         }
                       }
                     })                     
                   })
                   console.log(theMessage)
-
-                  studentSchema.findByIdAndUpdate(req.params.id, {
-                    $set: userObject
-                  }, (error, data) => {
-                    if (error) {
-                      return next(error);
-                      console.log(error)
-                    } else {
-                      console.log('Student updated successfully !')
-                      res.json(data)
-                    }
-                  })
-
               }
         }
     })
+    res.json(req.body)
     console.log( new Date(req.body.vence))
 })
 
