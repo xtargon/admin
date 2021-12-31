@@ -29,16 +29,11 @@ export default class SearchUser extends Component {
       var toSearch = document.getElementById("searchField").value;
       var print = document.getElementById("userShow")
       var showPrint = []
-
-    function search(elem){
-
-      let result = elem.phone.match(toSearch);
-      let result2 = elem.status.match(toSearch);
       
       $( ".selectStatus_Table_search" ).change(function() {
         var id = $(this).attr('id')
         var value = $(this).val()
-        alert('el id es →' + id + 'el estado →' + value)
+        
         var userStatus = {
           statusNew: value,
           id: id
@@ -47,7 +42,12 @@ export default class SearchUser extends Component {
        axios.post('http://75.102.23.138:4000/students/zz', userStatus, {headers: {authorization: 'Bearer '+cookies.get('token')}})
         .then(res => window.location.replace("/dashboard"));
       });
+      
+    function search(elem){
 
+      let result = elem.phone.match(toSearch);
+      let result2 = elem.status.match(toSearch);
+    
       if(result || result2){
             showPrint.push(elem);
             var divClone = $("#tableUsers").text("")
