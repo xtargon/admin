@@ -220,7 +220,7 @@ router.route('/config').get((req, res, next) => {
 router.route('/zz').post((req, res, next) => {
   jwt.verify(req.token, 'ENSURE_KEY258741', (err, dat) =>{
     
-    if(req.body.statusNew == 'Suspendido'){
+    if(req.body.statusNew == 3){
        configSchema.find((err, dataConfig) => {
          const regex = /cuenta_deposito/i;
          var procesedMenssage = dataConfig[0].menssage3.replace(regex, dataConfig[0].depo);
