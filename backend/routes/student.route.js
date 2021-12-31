@@ -120,8 +120,9 @@ router.route('/create-student').post((req, res) => {
                    var procesedMenssage9 = procesedMenssage8.replace(regex9, req.body.perfilNet);
                    
                    console.log('Esto guardo -->'+data2)
-                   utf8.encode(procesedMenssage9)
-                   console.log(procesedMenssage9)
+                   var mesaggeutf8 = utf8.encode(procesedMenssage9)
+                   
+                   console.log(mesaggeutf8)
             
                    superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').set('Accept-Encoding', 'gzip, deflate').set('Content-Type', 'charset=UTF-8').then(res => console.log(res.text)).catch(console.error);
                  })
