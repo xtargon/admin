@@ -57,7 +57,7 @@ export default class SearchUser extends Component {
       else{
          $('#tableUsers').html('<tr><td>'+elem.phone+'</td><td>'+elem.plan+'<td>'+elem.day+'</td><td>'+elem.vence+'</td><td>'+elem.status+'</td><td>'+elem.saldo+'</td><td><select id="'+elem.id+'" class="selectStatus_Table_search"><option  selected disabled>Seleccione un estado de usuario</option><option value="1">Vigente</option><option value="0">Por pagar</option><option value="2">Prorroga</option><option value="3">Suspendido</option></select>'+elem.mail+'</td><td>'+elem.pass+'</td><td>'+elem.perfilNet+'<br><hr>'+elem.typeAcounts+'<br>'+elem.pinNetflix+'</td><td>'+elem.nota+'</td><br><td><a class="aTable" href="/edit-user/'+elem.id+'">Edit</a><hr><a class="ButtonTable" href="/delete-user/'+elem.id+'" type="button">Delete</a></td></tr>');
       }
-    
+    }
     collections.forEach(element => search(element));
     
       $( ".selectStatus_Table_search" ).change(function() {
