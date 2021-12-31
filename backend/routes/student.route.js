@@ -124,7 +124,7 @@ router.route('/create-student').post((req, res) => {
                    
                    console.log(mesaggeutf8)
             
-                   superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+procesedMenssage9+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').set('Accept-Encoding', 'gzip, deflate').set('Content-Type', 'charset=UTF-8').then(res => console.log(res.text)).catch(console.error);
+                   superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').set('Accept-Encoding', 'gzip, deflate').set('Content-Type', 'charset=UTF-8').then(res => console.log(res.text)).catch(console.error);
                  })
                }
            })
