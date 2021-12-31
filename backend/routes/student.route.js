@@ -691,7 +691,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                     } else {
                       
                       console.log('Student updated successfully !')
-                      utf8.encode(theMessage)
+                      
                           var mesaggeutf8 = utf8.encode(theMessage)
 
                           console.log(mesaggeutf8)
