@@ -746,7 +746,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                         console.log(mesaggeutf8)
                         var id = client._id
                         console.log('action for ' + id)
-                        if(req.body.phone != client.phone && client.status != 3){
+                        if(req.body.phone != client.phone || client.status != 3){
                             const onlyPass = {
                                pass: req.body.pass
                             };
@@ -835,7 +835,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                         var id = client._id
                         console.log('action for ' + id)
                         
-                        if(req.body.phone != client.phone && client.status != 3){
+                        if(req.body.phone != client.phone || client.status != 3){
                          const onlyPass = {
                             pass: req.body.pass
                          };
