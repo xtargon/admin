@@ -71,7 +71,7 @@ export default class SearchUser extends Component {
       };
         
       axios.post('http://75.102.23.138:4000/students/zz', userStatus, {headers: {authorization: 'Bearer '+cookies.get('token')}})
-       .then(res => window.location.replace("/dashboard"));
+       .then(res => console.log(res));
       });    
   }
 
