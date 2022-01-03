@@ -438,6 +438,21 @@ router.route('/updateStatus').get((req, res) => {
 
                           console.log(mesaggeutf8)
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                       
+                          var jsonStatus = {status: 3}
+                          studentSchema.findByIdAndUpdate(idUpdate, {$set: jsonStatus},
+                          (error, data) => {
+                            if (error) {
+                              return next(error);
+                              console.log(error)
+                            } else {
+                              res.json(data)
+                              console.log('status updated successfully !')
+                            }
+                          })
+                          console.log(3+' → '+idUpdate)
+                        })                        
+                        
                         }
 
 
