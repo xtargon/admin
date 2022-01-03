@@ -136,7 +136,7 @@ export default class Configs extends Component {
 
         <Form.Group controlId="instanceID">
           <Form.Label>Instace_ id DE WAZBOT</Form.Label>
-          <br /><textarea className="textAreaConfig" id="instanceID" type="text" onChange={this.onChangeMessage1}></textarea>
+          <br /><textarea className="textAreaConfig" id="instanceID" type="text" onChange={this.onChangeInstanceID}></textarea>
         </Form.Group>
 
 
