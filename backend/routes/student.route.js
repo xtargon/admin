@@ -306,12 +306,11 @@ router.route('/zz').post((req, res, next) => {
 
 router.route('/updateStatus').get((req, res) => {
 
-  function SendMesaageProrroga(){
-     if (error) {
-       return 'none'
-     }
-    
+  function SendMesaageProrroga(){ 
     studentSchema.find((error, data) => {
+        if (error) {
+          return 'none'
+        }
         configSchema.find((err, data2) => {
             if (err) {
               return 'none'
@@ -319,7 +318,7 @@ router.route('/updateStatus').get((req, res) => {
             var data_config = data2[0]
             data.forEach(elem => sendThis(elem));
           
-            function sendThis(cli){
+            function sendThis(client){
               servicesSchema.findById(client.plan, (err, plan)=>{
                      if (client.status == 2) {
                           const regex = /cuenta_deposito/i;
