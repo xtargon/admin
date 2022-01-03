@@ -449,11 +449,12 @@ router.route('/updateStatus').get((req, res) => {
       })
 
     })
+    console.log("All fine!")
   }
   sendRememberDay(1)
   sendRememberDay(2)
   sendRememberDay(0)
-
+  res.send("All find")
 });
 
 
