@@ -125,7 +125,7 @@ router.route('/create-student').post((req, res) => {
                    
                    console.log(mesaggeutf8)
             
-                   superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').set('Accept-Encoding', 'gzip, deflate').set('Content-Type', 'charset=UTF-8').then(res => console.log(res.text)).catch(console.error);
+                   superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').set('Accept-Encoding', 'gzip, deflate').set('Content-Type', 'charset=UTF-8').then(res => console.log(res.text)).catch(console.error);
                  })
                }
            })
@@ -177,7 +177,7 @@ router.route('/create-student').post((req, res) => {
 
                          console.log(mesaggeutf8)
                         
-                        superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                        superagent.post('https://wazbot.com/api/send.php?number='+req.body.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
                       })
                     }
                 })
@@ -236,7 +236,7 @@ router.route('/zz').post((req, res, next) => {
 
                console.log(mesaggeutf8)
 
-               superagent.post('https://wazbot.com/api/send.php?number='+thisUser.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+               superagent.post('https://wazbot.com/api/send.php?number='+thisUser.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
               
             })
@@ -271,7 +271,7 @@ router.route('/zz').post((req, res, next) => {
 
                console.log(mesaggeutf8)
 
-               superagent.post('https://wazbot.com/api/send.php?number='+thisUser.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+               superagent.post('https://wazbot.com/api/send.php?number='+thisUser.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
               
             })
@@ -367,7 +367,7 @@ router.route('/updateStatus').get((req, res) => {
 
                          console.log(mesaggeutf8)
                           
-                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
                         }
 
@@ -402,7 +402,7 @@ router.route('/updateStatus').get((req, res) => {
                           var mesaggeutf8 = utf8.encode(procesedMenssage9)
 
                           console.log(mesaggeutf8)
-                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
                         }
                         if (days == 0) {
@@ -438,7 +438,7 @@ router.route('/updateStatus').get((req, res) => {
                           var mesaggeutf8 = utf8.encode(procesedMenssage9)
 
                           console.log(mesaggeutf8)
-                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
                        
                           var jsonStatus = {status: 3}
                           studentSchema.findByIdAndUpdate(idUpdate, {$set: jsonStatus},
@@ -783,7 +783,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                                 console.log('Student updated successfully !')
                               }
                             })
-                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                         }
                         else{
                          studentSchema.findByIdAndUpdate(id, {
@@ -875,7 +875,7 @@ router.route('/update-user/:id').put((req, res, next) => {
                             }
                           })
                           
-                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61CE9C96515D4&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(resMessage => console.log(resMessage.text)).catch(console.error);
                         }
                         
                         else{
