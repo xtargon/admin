@@ -15,6 +15,15 @@ let adminSchema = require('../models/Admin');
 let configSchema = require('../models/data_config');
 let servicesSchema = require('../models/Services');
 
+cron.schedule('0 7 * * *', () => {
+   superagent.get('http://75.102.23.138:4000/students/updateStatus').then(res => console.log('AHFHJOAFSDGFDGHJÓIHFDLKÑJGFDJKÑNGXHFD')).catch(console.error);
+   console.log('mamaguevo Running a job at 07:00 at America/Mexico timezone');
+ }, {
+   scheduled: true,
+   timezone: "America/Mexico_City"
+});
+
+
 router.route('/create-service').post(ensureToken, (req, res, next) => {
   jwt.verify(req.token, 'ENSURE_KEY258741', (err, dat) =>{
       if(err){
@@ -457,8 +466,12 @@ router.route('/updateStatus').get((req, res) => {
 
 
                 })
+              var resss = {messaje: 'Todo BIEN!'}
+              console.log(resss)
+            }else{
+              var resss = {messaje: 'no hay usuarios para actualizar hoy'}
+              console.log(resss)
             }
-            res.send(idUpdate)
         }
 
       })
@@ -470,14 +483,6 @@ router.route('/updateStatus').get((req, res) => {
   sendRememberDay(2)
   sendRememberDay(0)
 
-});
-
-cron.schedule('0 7 * * *', () => {
-   superagent.get('http://75.102.23.138:4000/students/updateStatus')
-   console.log('Running a job at 07:00 at America/Mexico_City timezone');
- }, {
-   scheduled: true,
-   timezone: "America/Mexico_City"
 });
 
 function ensureToken(req, res, next){
