@@ -3,6 +3,7 @@ let mongoose = require('mongoose'),
   router = express.Router();
 let jwt = require('jsonwebtoken');
 
+const cron = require('node-cron');
 const got = require('got');
 const superagent = require('superagent');
 const utf8 = require('utf8');
@@ -471,6 +472,13 @@ router.route('/updateStatus').get((req, res) => {
 
 });
 
+ cron.schedule('0 7 * * *', () => {
+   superagent.get('http://75.102.23.138:4000/students/updateStatus')
+   console.log('Running a job at 07:00 at America/Mexico_City timezone');
+ }, {
+   scheduled: true,
+   timezone: "America/Mexico_City"
+ });
 
 function ensureToken(req, res, next){
   const bererHeader = req.headers['authorization'];
