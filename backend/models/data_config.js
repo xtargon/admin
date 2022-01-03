@@ -23,6 +23,9 @@ let configSchema = new Schema({
   trans: {
     type: String
   },  
+  instanceID: {
+    type: String
+  }, 
 }, {
     collection: 'config'
   })
