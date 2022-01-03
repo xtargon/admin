@@ -184,7 +184,7 @@ export default class EditStudent extends Component {
       this.perfilNetflix = $('#perfilNetflix').val()
 
     }
-    if (typeA == undefined) {
+    if (this.plan != 'Netflix') {
       userObject = {
         phone: this.phone,
         nota: this.note,
