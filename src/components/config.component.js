@@ -14,6 +14,7 @@ export default class Configs extends Component {
     this.message3 = '';
     this.message4 = '';
     this.message5 = '';
+    this.instanceID = '';
     this.depo = '';
     this.trans = '';
     this.id = ''
@@ -23,6 +24,7 @@ export default class Configs extends Component {
     this.onChangeMessage3 = this.onChangeMessage3.bind(this);
     this.onChangeMessage4 = this.onChangeMessage4.bind(this);
     this.onChangeMessage5 = this.onChangeMessage5.bind(this);
+    this.onChangeInstanceID = this.onChangeInstanceID.bind(this);
 
     this.onChangDepo = this.onChangDepo.bind(this);
     this.onChangTrans = this.onChangTrans.bind(this);
@@ -43,6 +45,7 @@ export default class Configs extends Component {
       this.message3 = res.data[0].menssage3;
       this.message4 = res.data[0].menssage4;
       this.message5 = res.data[0].menssage5;
+      this.instanceID = res.data[0].instanceID;
       this.depo = res.data[0].depo;
       this.trans = res.data[0].trans;
       this.id = res.data[0]._id
@@ -52,6 +55,7 @@ export default class Configs extends Component {
       $('#menssage3').val(this.message3)
       $('#menssage4').val(this.message4)
       $('#menssage5').val(this.message5)
+      $('#instanceID').val(this.instanceID)
       $('#depo').val(this.depo)
       $('#trans').val(this.trans)
 
@@ -65,6 +69,14 @@ export default class Configs extends Component {
     this.message1 = e.target.value;
     $('#menssage1').val(this.message1)
   }  
+
+  onChangeInstanceID(e) {
+    this.instanceID = e.target.value;
+    $('#instanceID').val(this.instanceID)
+  }  
+
+  
+
   onChangeMessage2(e) {
     this.message2 = e.target.value;
     $('#menssage2').val(this.message2)
@@ -97,6 +109,7 @@ export default class Configs extends Component {
       menssage3: this.message3,
       menssage4: this.message4,
       menssage5: this.message5,
+      instanceID: this.instanceID,
       depo: this.depo,
       trans: this.trans,
       id: this.id
@@ -120,6 +133,13 @@ export default class Configs extends Component {
     return (<div className="form-wrapper">
       <Form onSubmit={this.onSubmit}>
       	<h3>Configuración ↓</h3>
+
+        <Form.Group controlId="instanceID">
+          <Form.Label>Instace_ id DE WAZBOT</Form.Label>
+          <br /><textarea className="textAreaConfig" id="instanceID" type="text" onChange={this.onChangeMessage1}></textarea>
+        </Form.Group>
+
+
         <Form.Group controlId="Name">
           <Form.Label>Mensaje de bienvenida</Form.Label>
           <br /><textarea className="textAreaConfig" id="menssage1" type="text" onChange={this.onChangeMessage1}></textarea>
@@ -156,7 +176,7 @@ export default class Configs extends Component {
         </Form.Group>
 
         <Button variant="danger" size="lg" block="block" type="submit">
-          Configurar Todo!
+          Guardar!
         </Button>
 
       </Form>
