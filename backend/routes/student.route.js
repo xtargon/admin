@@ -443,8 +443,8 @@ router.route('/updateStatus').get((req, res) => {
                           studentSchema.findByIdAndUpdate(idUpdate, {$set: jsonStatus},
                           (error, data) => {
                             if (error) {
-                              return next(error);
                               console.log(error)
+                              res.send(error)
                             } else {
                               res.json(data)
                               console.log('status updated successfully !')
@@ -469,7 +469,6 @@ router.route('/updateStatus').get((req, res) => {
   sendRememberDay(1)
   sendRememberDay(2)
   sendRememberDay(0)
-  res.send("All find")
 });
 
 
