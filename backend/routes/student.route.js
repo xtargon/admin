@@ -335,7 +335,6 @@ router.route('/updateStatus').get((req, res) => {
           var thisDate= new Date(dayy)
           var thisVence= new Date(veceDatee)
           
-            if (dayy == veceDatee){
               console.log(thisDate +' -- '+ thisVence)
                 var numWhats = client.phone 
                 var saldo = client.saldo
@@ -346,8 +345,8 @@ router.route('/updateStatus').get((req, res) => {
                 console.log("por pagar")
 
                 servicesSchema.findById(client.plan, (err, plan)=>{
-                  
-                       if(client.status == 2){
+                      if (client.status == 2) {
+
                           const regex = /cuenta_deposito/i;
                           var procesedMenssage = data_config.menssage2.replace(regex, data_config.depo);
 
@@ -374,14 +373,14 @@ router.route('/updateStatus').get((req, res) => {
 
                           const regex9 = /su_perfilNet/i;
                           var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
-                          var mesaggeutf8 = utf8.encode(procesedMenssage9)
+                         var mesaggeutf8 = utf8.encode(procesedMenssage9)
 
-                          console.log(mesaggeutf8)
+                         console.log(mesaggeutf8)
                           
                           superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
 
                         }
-                  
+                   if (dayy == veceDatee){
                        if (days == 2) {
 
                           const regex = /cuenta_deposito/i;
@@ -500,16 +499,14 @@ router.route('/updateStatus').get((req, res) => {
                           })
                           
                           console.log(3+' → '+idUpdate) 
-                        }
-
-
+                       }
+                    var resss = {messaje: 'Todo BIEN!'}
+                    console.log(resss)
+                  }else{
+                    var resss = {messaje: 'no hay usuarios para actualizar hoy'}
+                    console.log(resss)
+                  }
                 })
-              var resss = {messaje: 'Todo BIEN!'}
-              console.log(resss)
-            }else{
-              var resss = {messaje: 'no hay usuarios para actualizar hoy'}
-              console.log(resss)
-            }
         }
 
       })
@@ -713,8 +710,9 @@ router.route('/update-config').put((req, res, next) => {
       menssage3: req.body.menssage3,
       menssage4: req.body.menssage4,
       menssage5: req.body.menssage5,
+      instanceID: req.body.instanceID,
       depo: req.body.depo,
-      trans: req.body.trans
+      trans: req.body.trans 
     }
     configSchema.findByIdAndUpdate(req.body.id, {$set: jsonService},
     (error, data) => {
