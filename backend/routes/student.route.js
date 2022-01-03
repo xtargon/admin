@@ -323,6 +323,8 @@ router.route('/updateStatus').get((req, res) => {
         data.forEach(elem => sendMenssages(elem));
 
         function sendMenssages(client){
+          
+
 
           var numWhats2 = client.phone 
           var saldo2 = client.saldo
@@ -344,6 +346,42 @@ router.route('/updateStatus').get((req, res) => {
                 console.log("por pagar")
 
                 servicesSchema.findById(client.plan, (err, plan)=>{
+                  
+                       if(client.status == 2){
+                          const regex = /cuenta_deposito/i;
+                          var procesedMenssage = data_config.menssage2.replace(regex, data_config.depo);
+
+                          const regex2 = /cuenta_transferencia/i;
+                          var procesedMenssage2 = procesedMenssage.replace(regex2, data_config.trans);
+
+                          const regex3 = /su_servicio/i;
+                          var procesedMenssage3 = procesedMenssage2.replace(regex3, plan.typeService);
+
+                          const regex4 = /su_saldo/i;
+                          var procesedMenssage4 = procesedMenssage3.replace(regex4, saldo+' Pesos');
+
+                          const regex5 = /su_tipo/i;
+                          var procesedMenssage5 = procesedMenssage4.replace(regex5, client.typeAcount);
+
+                          const regex6 = /su_correo/i;
+                          var procesedMenssage6 = procesedMenssage5.replace(regex6, client.mail);
+
+                          const regex7 = /su_contraseña/i;
+                          var procesedMenssage7 = procesedMenssage6.replace(regex7, client.pass);
+
+                          const regex8 = /su_piNet/i;
+                          var procesedMenssage8 = procesedMenssage7.replace(regex8, client.pinNetflix);
+
+                          const regex9 = /su_perfilNet/i;
+                          var procesedMenssage9 = procesedMenssage8.replace(regex9, client.perfilNet);
+                          var mesaggeutf8 = utf8.encode(procesedMenssage9)
+
+                          console.log(mesaggeutf8)
+                          
+                          superagent.post('https://wazbot.com/api/send.php?number='+client.phone+'&type=text&message='+mesaggeutf8+'&instance_id=61D3493D89866&access_token=eaf402b5ea7a4391fa1346e1099a5215').then(res => console.log(res.text)).catch(console.error);
+
+                        }
+                  
                        if (days == 2) {
 
                           const regex = /cuenta_deposito/i;
