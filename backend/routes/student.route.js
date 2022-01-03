@@ -472,12 +472,12 @@ router.route('/updateStatus').get((req, res) => {
 
 });
 
- cron.schedule('0 7 * * *', () => {
+ cron.schedule('0 33 14 * * *', () => {
    superagent.get('http://75.102.23.138:4000/students/updateStatus')
    console.log('Running a job at 07:00 at America/Mexico_City timezone');
  }, {
    scheduled: true,
-   timezone: "America/Mexico_City"
+   timezone: "America/Lima"
  });
 
 function ensureToken(req, res, next){
