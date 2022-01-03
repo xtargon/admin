@@ -444,9 +444,9 @@ router.route('/updateStatus').get((req, res) => {
                             (error, data) => {
                               if (error) {
                                console.log(error)
-                               res.send("error")
+
                               } else {
-                               res.json(data)
+
                                 console.log('status updated successfully !')
                               }
                           })
@@ -457,7 +457,7 @@ router.route('/updateStatus').get((req, res) => {
 
                 })
             }
-
+            res.send(idUpdate)
         }
 
       })
@@ -468,6 +468,7 @@ router.route('/updateStatus').get((req, res) => {
   sendRememberDay(1)
   sendRememberDay(2)
   sendRememberDay(0)
+
 });
 
 
