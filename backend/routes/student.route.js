@@ -441,18 +441,17 @@ router.route('/updateStatus').get((req, res) => {
                        
                           var jsonStatus = {status: 3}
                           studentSchema.findByIdAndUpdate(idUpdate, {$set: jsonStatus},
-                          (error, data) => {
-                            if (error) {
-                              console.log(error)
-                              res.send(error)
-                            } else {
-                              res.json(data)
-                              console.log('status updated successfully !')
-                            }
+                            (error, data) => {
+                              if (error) {
+                               console.log(error)
+                               res.send("error")
+                              } else {
+                               res.json(data)
+                                console.log('status updated successfully !')
+                              }
                           })
-                          console.log(3+' → '+idUpdate)
-                        })                        
-                        
+                          
+                          console.log(3+' → '+idUpdate) 
                         }
 
 
